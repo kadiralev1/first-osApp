@@ -9,17 +9,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var randomBiSeyler1 :Int = 0
+    var randomBiSeyler2 : Int = 0
+    @IBOutlet weak var diceImageView1: UIImageView!
+    
+    @IBOutlet weak var  diceImageView2: UIImageView!
+    
+    let diceArray = ["dice1","dice2","dice3","dice4","dice5","dice6"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        updateDiceFace()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func rollButtonPress(_ sender: Any) {
+        
+        updateDiceFace()
+        
     }
-
-
+    func updateDiceFace(){
+        randomBiSeyler1 = Int(arc4random_uniform(6))
+        randomBiSeyler2 = Int(arc4random_uniform(6))
+        
+        diceImageView1.image = UIImage(named: diceArray[randomBiSeyler1])
+        diceImageView2.image = UIImage(named: diceArray[randomBiSeyler2])
+    }
+    
 }
 
